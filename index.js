@@ -11,7 +11,6 @@ const blogRoute = require("./routes/blog");
 const { restrictToSigninUserOnly, checkAuth } = require("./middlewares/auth");
 
 const app = express();
-const PORT = process.env.PORT || 4000;
 
 // Set view engine
 app.set("view engine", "ejs");
@@ -33,7 +32,5 @@ app.use(express.static("public"));
 app.use("/", checkAuth, staticRoute);
 app.use("/my-blog", restrictToSigninUserOnly, blogRoute);
 
-
-app.listen(PORT, () =>
-  console.log(`Server listening on Port: "https://localhost:${PORT}`)
-);
+// Export the app for Vercel
+module.exports = app;
