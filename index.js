@@ -11,7 +11,7 @@ const blogRoute = require("./routes/blog");
 const { restrictToSigninUserOnly, checkAuth } = require("./middlewares/auth");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 // Set view engine
 app.set("view engine", "ejs");
