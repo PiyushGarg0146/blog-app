@@ -1,0 +1,68 @@
+<head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.4rem;
+      background-color: antiquewhite;
+    }
+    a {
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<header>
+  <nav class="nav">
+    <a
+      class="nav-link"
+      style="color: black; font-weight: 800; cursor: pointer"
+      href="/"
+      >BLOGIFY</a
+    >
+    <div class="dropdown">
+      <% if (locals.user) { %>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="color: rgb(78, 74, 74)"
+        >
+          <%= user.userName %>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/my-blog">My Blog</a></li>
+          <li>
+            <a class="dropdown-item" href="/my-blog/new-blog">Add Blog</a>
+          </li>
+          <li><a class="dropdown-item" href="/logout">LOG OUT</a></li>
+        </ul>
+      </li>
+
+      <% } else { %>
+
+      <div class="not-signin" style="display: flex">
+        <li class="nav-item">
+          <a class="nav-link" href="/signup" style="color: rgb(78, 74, 74)"
+            >signup</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signin" style="color: rgb(78, 74, 74)"
+            >signin</a
+          >
+        </li>
+      </div>
+
+      <% } %>
+    </div>
+  </nav>
+</header>

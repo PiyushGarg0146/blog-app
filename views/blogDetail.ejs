@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <style>
+      pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow: hidden;
+      }
+      img {
+        width: 100%;
+      }
+      .user-name{
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+
+    <div class="main-section m-5">
+      <img src="/uploads/<%= blog.blogImageUrl %>" alt="" />
+      <div class="user-name mt-2">
+        <h1><%= blog.title %></h1>
+        <h3 class="m-3" style="color: blue;"><%= blog.createdBy.userName %></h6>
+      </div>
+      <pre><%= blog.description %></pre>
+    </div>
+
+    <%- include("./partials/comment") %>
+    <%- include("./partials/script") %>
+  </body>
+</html>

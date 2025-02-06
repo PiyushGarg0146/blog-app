@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+
+    <form class="m-5" method="post" action="/signin">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          name="email"
+          type="email"
+          class="form-control"
+          id="email"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <% if (locals.error) { %>
+      <div class="alert alert-danger m-5" role="alert"><%= error %></div>
+      <% } %> 
+
+    <%- include("./partials/script") %>
+  </body>
+</html>

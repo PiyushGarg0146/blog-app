@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <style>
+      .card-section {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: auto;
+        row-gap: 40px;
+        margin: 50px 0px;
+      }
+      .card {
+        border: 1px solid rgb(176, 176, 241);
+        border-radius: 50px;
+        justify-self: center;
+      }
+      .give-name{
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+     <% if (locals.blogs) { %>
+
+    <div class="card-section ">
+      <% blogs.forEach(blog => { %>
+      <div class="card" style="width: 18rem">
+        <img
+          src="/uploads/<%= blog.blogImageUrl %>"
+          class="card-img-top"
+          alt="image of <%= blog.title %>"
+        />
+        <div class="card-body">
+          <div class="give-name">
+            <h5 class="card-title"><%= blog.title %></h5>
+            <p style="color: blue;"><%= blog.createdBy.userName %></p>
+          </div>
+          <p class="card-text"><%= blog.description.slice(0,50) %> ...</p>
+          <a href="/my-blog/blog/<%= blog._id %>" class="btn btn-primary">view</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <% } else { %>
+
+    <h1 class="m-5">No Blogs Found</h1>
+
+    <% } %> <%- include("./partials/script") %>
+  </body>
+</html>

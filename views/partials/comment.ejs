@@ -1,0 +1,31 @@
+<div class="comment-section m-5">
+  <h1>
+    Comment
+    <span style="font-size: 25px; color: rgb(173, 170, 170)"
+      >(<% if (comments.length > 0) { %> <%= comments.length %> <% } else {%> 0
+      <% } %> )</span
+    >
+  </h1>
+
+  <form action="/my-blog/blog/<%= blog._id %>" method="post">
+    <div class="input-group">
+      <textarea
+        class="form-control"
+        placeholder="enter a comment"
+        rows="5"
+        name="content"
+      ></textarea>
+    </div>
+    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+  </form>
+
+  <% if (locals.comments) { %>
+  <div class="print-comment mt-5">
+    <% comments.forEach(comment => { %>
+    <h6 style="color: rgb(119, 97, 70)"><%= comment.userId.userName %></h6>
+    <pre style="margin-bottom: 10px"><%= comment.content %></pre>
+    <br>
+    <% }) %>
+  </div>
+  <% } %>
+</div>
