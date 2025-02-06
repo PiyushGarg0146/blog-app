@@ -18,7 +18,7 @@ app.set("views", path.resolve("./views"));
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))
   .catch((e) => console.log("MongoDB connection error", e));
 
