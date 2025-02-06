@@ -28,3 +28,4 @@ build/
 # NPM & Yarn locks (optional)
 package-lock.json
 yarn.lock
+.vercel
