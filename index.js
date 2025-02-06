@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const ejs = require("ejs");
@@ -11,6 +11,7 @@ const blogRoute = require("./routes/blog");
 const { restrictToSigninUserOnly, checkAuth } = require("./middlewares/auth");
 
 const app = express();
+const PORT = process.env.PORT;
 
 // Set view engine
 app.set("view engine", "ejs");
@@ -32,5 +33,7 @@ app.use(express.static("public"));
 app.use("/", checkAuth, staticRoute);
 app.use("/my-blog", restrictToSigninUserOnly, blogRoute);
 
-// ✅ Export app for Vercel
-module.exports = app;
+
+app.listen(PORT, () =>
+  console.log(`Server listening on Port: "https://localhost:${PORT}`)
+);
